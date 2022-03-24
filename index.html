@@ -5,6 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advice generator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
+    />
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        padding: 48px 0;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background-color: hsl(218, 23%, 16%);
+      }
+      .advice-generator {
+        --primary: hsl(150, 100%, 66%);
+
+        width: 343px;
+        max-width: 100%;
+        font-weight: 800;
+        position: relative;
+        text-align: center;
+        border-radius: 16px;
+        padding: 44px 24px 64px;
+        font-family: "Manrope", sans-serif;
+        background-color: hsl(217, 19%, 24%);
+      }
+      .advice-generator h2 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: var(--primary);
+        text-transform: uppercase;
+      }
+      .advice-generator blockquote {
+        font-size: 28px;
+        margin: 25px 0 20px;
+        color: hsl(193, 38%, 86%);
+      }
+      .advice-generator button {
+        top: calc(100% - 32px);
+        left: 50%;
+        width: 64px;
+        height: 64px;
+        border: none;
+        outline: none;
+        line-height: 0;
+        border-radius: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        will-change: box-shadow;
+        transition: box-shadow 0.3s;
+        background-color: var(--primary);
+      }
+      .advice-generator button:hover,
+      .advice-generator button:focus-visible {
+        box-shadow: 0 0 15px var(--primary);
+      }
+      @media (min-width: 768px) {
+        .advice-generator {
+          width: 540px;
+          padding: 52px 48px 72px;
+        }
+        .advice-generator h2 {
+          font-size: 16px;
+        }
+        .advice-generator blockquote {
+          margin: 30px 0 32px;
+        }
+      }
+    </style>
   </head>
   <body>
     <main>
