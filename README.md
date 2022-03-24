@@ -5,4 +5,4 @@ This is a solution to the [Advice generator app challenge on Frontend Mentor](ht
 ## Links
 
 - Live Site [URL](https://mhmd-tarek-mhmd.github.io/Advice-generator-app)
-- Solution [URL](https://www.frontendmentor.io/solutions/advice-generator-app-)
+- Solution [URL](https://www.frontendmentor.io/solutions/advice-generator-app-rJ7zBHFGq)
