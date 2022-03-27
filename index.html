@@ -47,17 +47,36 @@
         margin: 25px 0 20px;
         color: hsl(193, 38%, 86%);
       }
+      .advice-generator [role="alert"],
+      .advice-generator [role="alert"]::before,
       .advice-generator button {
-        top: calc(100% - 32px);
         left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+      }
+      .advice-generator [role="alert"] {
+        bottom: 35px;
+        color: #dbcece;
+        font-size: 12px;
+        padding: 10px 15px;
+        border-radius: 30px;
+        background-color: hsl(218, 23%, 16%);
+      }
+      .advice-generator [role="alert"]::before {
+        top: 100%;
+        content: "";
+        border-width: 10px;
+        border-style: solid;
+        border-color: hsl(218, 23%, 16%) transparent transparent;
+      }
+      .advice-generator button {
         width: 64px;
         height: 64px;
         border: none;
         outline: none;
         line-height: 0;
         border-radius: 50%;
-        position: absolute;
-        transform: translateX(-50%);
+        top: calc(100% - 32px);
         will-change: box-shadow;
         transition: box-shadow 0.3s;
         background-color: var(--primary);
@@ -98,6 +117,7 @@
           <img src="images/pattern-divider-mobile.svg" alt="" />
         </picture>
 
+        <p role="alert" hidden></p>
         <button aria-label="Get a new advice" onclick="getQuote()">
           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -112,14 +132,32 @@
     <script>
       const id = document.querySelector(".advice-generator .id");
       const quote = document.querySelector(".advice-generator q");
+      const alert = document.querySelector(".advice-generator [role=alert]");
+      let isWaiting = false;
 
       function getQuote() {
-        fetch("https://api.adviceslip.com/advice")
-          .then((res) => res.json())
-          .then((data) => {
-            id.innerHTML = data.slip.id;
-            quote.innerHTML = data.slip.advice;
-          });
+        if (!isWaiting) {
+          fetch("https://api.adviceslip.com/advice")
+            .then((res) => res.json())
+            .then((data) => {
+              alert.setAttribute("hidden", "");
+              id.innerHTML = data.slip.id;
+              quote.innerHTML = data.slip.advice;
+
+              isWaiting = true;
+              const clear = setInterval(() => {
+                isWaiting = false;
+                clearInterval(clear);
+              }, 30000);
+            })
+            .catch((error) => {
+              alert.innerHTML = "Check the internet connection";
+              alert.removeAttribute("hidden");
+            });
+        } else {
+          alert.innerHTML = "You can have a new advice every 30s";
+          alert.removeAttribute("hidden");
+        }
       }
       getQuote();
     </script>
