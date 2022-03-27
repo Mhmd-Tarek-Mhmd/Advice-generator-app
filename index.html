@@ -41,7 +41,8 @@
         color: var(--primary);
         text-transform: uppercase;
       }
-      .advice-generator blockquote {
+      .advice-generator q {
+        display: block;
         font-size: 28px;
         margin: 25px 0 20px;
         color: hsl(193, 38%, 86%);
@@ -73,7 +74,7 @@
         .advice-generator h2 {
           font-size: 16px;
         }
-        .advice-generator blockquote {
+        .advice-generator q {
           margin: 30px 0 32px;
         }
       }
@@ -82,8 +83,11 @@
   <body>
     <main>
       <article class="advice-generator">
-        <h2>Advice #<span class="id"></span></h2>
-        <blockquote></blockquote>
+        <h2>Advice #<span class="id">117</span></h2>
+        <q>
+          It's easy to sit up and take notice, what's difficult is getting up
+          and taking an action.
+        </q>
 
         <picture aria-hidden="true">
           <source
@@ -107,7 +111,7 @@
 
     <script>
       const id = document.querySelector(".advice-generator .id");
-      const quote = document.querySelector(".advice-generator blockquote");
+      const quote = document.querySelector(".advice-generator q");
 
       function getQuote() {
         fetch("https://api.adviceslip.com/advice")
