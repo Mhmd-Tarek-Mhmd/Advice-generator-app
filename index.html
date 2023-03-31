@@ -21,6 +21,13 @@
         justify-content: center;
         background-color: hsl(218, 23%, 16%);
       }
+      .sr-only {
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
       .advice-generator {
         --primary: hsl(150, 100%, 66%);
 
@@ -114,6 +121,10 @@
     </style>
   </head>
   <body>
+    <header class="sr-only">
+      <h1>Advice generator</h1>
+    </header>
+
     <main>
       <article class="advice-generator">
         <h2>Advice #<span class="id">117</span></h2>
@@ -122,17 +133,13 @@
           and taking an action.
         </q>
 
-        <picture>
+        <picture aria-hidden="true">
           <source
             media="(max-width: 767px)"
             srcset="images/pattern-divider-mobile.svg"
           />
           <source srcset="images/pattern-divider-desktop.svg" />
-          <img
-            aria-hidden="true"
-            src="images/pattern-divider-mobile.svg"
-            alt=""
-          />
+          <img src="images/pattern-divider-mobile.svg" alt="" />
         </picture>
 
         <p role="alert" hidden></p>
